@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaprDatos - Hub de Contenido Dinámico</title>
+    
+    <!-- Verificación de Google Search Console -->
+    <meta name="google-site-verification" content="LaFOIYcTC_8rOf3R3CwZc1BpCsmNzSu4TxbPq8T8mIY" />
+    
+    <!-- ============================================
+       METAETIQUETAS SEO Y OPEN GRAPH
+       ============================================ -->
+    
+    <!-- Descripción para SEO -->
+    <meta name="description" content="CaprDatos - Hub de contenido dinámico con videos de YouTube, comunidad activa y noticias de videojuegos. Curiosidades, tecnología y entretenimiento en un solo lugar.">
+    <meta name="keywords" content="CaprDatos, YouTube, videojuegos, tecnología, curiosidades, comunidad, gaming, entretenimiento">
+    <meta name="author" content="CaprDatos">
+    
+    <!-- Open Graph para Facebook y otras redes sociales -->
+    <meta property="og:title" content="CaprDatos - Hub de Contenido Dinámico">
+    <meta property="og:description" content="Descubre el contenido dinámico de CaprDatos: videos de YouTube, comunidad activa y noticias de videojuegos. Curiosidades y tecnología en un solo lugar.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CaprDatos">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card para X (Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CaprDatos - Hub de Contenido Dinámico">
+    <meta name="twitter:description" content="Descubre el contenido dinámico de CaprDatos: videos de YouTube, comunidad activa y noticias de videojuegos.">
+    <meta name="twitter:image" content="assets/logo.png">
+    
+    <!-- Metadatos adicionales para WhatsApp y otras plataformas -->
+    <meta property="og:image:alt" content="Logo de CaprDatos">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Favicon (opcional) -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    
+    <!-- Google Fonts - Fuente suave y moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Archivo CSS externo -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav>
+        <div class="nav-container">
+            <!-- Logo de CaprDatos (cargado desde base de datos) -->
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="logo-image" loading="lazy" width="60" height="60">
+                <div class="logo-text" style="display: none;">
+                    <span style="color: white;">Capr</span><span style="color: #ff6b35;">Datos</span>
+                </div>
+            </div>
+            
+            <!-- Botón hamburguesa para móviles -->
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Menú de navegación -->
+            <ul id="nav-menu">
+                <li><a href="#principal" onclick="closeMenu()">🏠 Principal</a></li>
+                <li><a href="#videos" onclick="closeMenu()">🎬 Videos</a></li>
+                <li><a href="#shorts" onclick="closeMenu()">⚡ Shorts</a></li>
+                <li><a href="#comunidad" onclick="closeMenu()">💬 Comunidad</a></li>
+                <li><a href="#contactos" onclick="closeMenu()">📱 Contactos</a></li>
+                <li><a href="#noticias" onclick="closeMenu()">🎮 Noticias</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">🌙</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección Principal con Bienvenidos -->
+    <section id="principal">
+        <div class="section-container">
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>Bienvenidos</h1>
+            </header>
+            <p class="intro-text" style="text-align: center; color: #e0e0e0; font-size: 1.2rem; margin-bottom: 2rem;">
+                Explora el contenido dinámico de CaprDatos: videos, comunidad y noticias del mundo tecnológico
+            </p>
+
+            <!-- Sección Destacada - Contenido Viral -->
+            <div class="featured-section">
+                <h2 class="featured-title" style="text-align: center; margin-bottom: 1.5rem; color: #ffffff;">🔥 Contenido Destacado</h2>
+                <div class="featured-grid" id="featured-container">
+                    <!-- El contenido destacado se cargará dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="action-buttons">
+                <a href="https://www.youtube.com/@CaprDatos?sub_confirmation=1" target="_blank" class="action-btn youtube-btn">
+                    <span class="action-btn-icon">🎬</span>
+                    Suscríbete al Canal
+                </a>
+                <a href="#contactos" class="action-btn support-btn">
+                    <span class="action-btn-icon">🛠️</span>
+                    Soporte Técnico
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Videos de YouTube (Feed RSS Dinámico) -->
+    <section id="videos">
+        <div class="section-container">
+            <!-- Header Brand con Logo y Título -->
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>🎬 Videos Recientes</h1>
+            </header>
+            <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 1rem; gap: 1rem;">
+                <h2 style="text-align: center;">Últimos videos de CaprDatos</h2>
+                <button onclick="refreshVideos()" class="refresh-button" style="color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem; transition: transform 0.3s ease;">
+                    🔄 Actualizar
+                </button>
+            </div>
+            
+            <!-- Contenedor del grid de videos -->
+            <div class="videos-grid" id="videos-container">
+                <div class="loading">Cargando videos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Shorts Recientes -->
+    <section id="shorts">
+        <div class="section-container">
+            <!-- Header Brand con Logo y Título -->
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>⚡ Shorts Recientes</h1>
+            </header>
+            <h2>Contenido corto y dinámico</h2>
+            
+            <!-- Contenedor del grid de shorts -->
+            <div class="videos-grid" id="shorts-container">
+                <div class="loading">Cargando shorts</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Comunidad (Publicaciones Estáticas) -->
+    <section id="comunidad">
+        <div class="section-container">
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>💬 Comunidad</h1>
+            </header>
+            <h2>Muro de Publicaciones</h2>
+            
+            <!-- Contenedor de publicaciones de comunidad -->
+            <div class="community-posts" id="community-container">
+                <!-- Las publicaciones se cargarán mediante JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contactos -->
+    <section id="contactos">
+        <div class="section-container">
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>📱 Contactos</h1>
+            </header>
+            <h2>Conéctate conmigo</h2>
+            
+            <div class="social-links">
+                <a href="https://x.com/drecxegame" target="_blank" class="social-link x-link">
+                    🐦 X (Twitter)
+                </a>
+                <a href="https://www.facebook.com/drecxegame/" target="_blank" class="social-link facebook-link">
+                    📘 Facebook
+                </a>
+                <a href="https://www.threads.com/@drecx_egame?hl=es-la" target="_blank" class="social-link threads-link">
+                    🧵 Threads
+                </a>
+                <a href="https://www.instagram.com/drecx_egame/" target="_blank" class="social-link instagram-link">
+                    📷 Instagram
+                </a>
+                <a href="https://www.youtube.com/@CaprDatos" target="_blank" class="social-link" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);">
+                    🎬 YouTube
+                </a>
+                <a href="https://www.tiktok.com/@caprdatos" target="_blank" class="social-link" style="background: linear-gradient(135deg, #000000 0%, #25f4ee 100%);">
+                    🎵 TikTok
+                </a>
+            </div>
+
+            <!-- Botones de Acción Adicionales -->
+            <div class="action-buttons" style="margin-top: 3rem;">
+                <a href="https://www.youtube.com/@CaprDatos?sub_confirmation=1" target="_blank" class="action-btn youtube-btn">
+                    <span class="action-btn-icon">🎬</span>
+                    Suscríbete al Canal
+                </a>
+                <a href="mailto:soporte@caprdatos.com" class="action-btn support-btn">
+                    <span class="action-btn-icon">📧</span>
+                    Email de Soporte
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Noticias -->
+    <section id="noticias">
+        <div class="section-container">
+            <h1>🎮 Noticias de Videojuegos</h1>
+            <h2>Fuentes Confiables</h2>
+            
+            <div class="social-links">
+                <a href="https://www.ign.com/es/games" target="_blank" class="social-link" style="background: linear-gradient(135deg, #ff7300 0%, #ff5500 100%);">
+                    🔥 IGN España
+                </a>
+                <a href="https://www.eurogamer.es/" target="_blank" class="social-link" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);">
+                    🎮 Eurogamer
+                </a>
+                <a href="https://www.3djuegos.com/" target="_blank" class="social-link" style="background: linear-gradient(135deg, #0066cc 0%, #004499 100%);">
+                    🕹️ 3DJuegos
+                </a>
+                <a href="https://www.meristation.com/" target="_blank" class="social-link" style="background: linear-gradient(135deg, #9900ff 0%, #6600cc 100%);">
+                    ⚡ MeriStation
+                </a>
+                <a href="https://www.hobbyconsolas.com/" target="_blank" class="social-link" style="background: linear-gradient(135deg, #ff6600 0%, #cc5200 100%);">
+                    🎯 HobbyConsolas
+                </a>
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: center; color: #888;">
+                <p>Última actualización: <span id="last-update">Cargando...</span></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ============================================
+        // CONFIGURACIÓN Y DATOS
+        // ============================================
+        
+        // ============================================
+        // VIDEOS DE YOUTUBE - CONFIGURACIÓN
+        // ============================================
+        
+        // ID del canal de CaprDatos (proporcionado por el usuario)
+        // Si este handle no funciona, puedes usar el ID del canal en formato UCxxxxxxxxxxxxxxxxxx
+        const CAPRDATOS_CHANNEL_ID = '@CaprDatos'; // Usar handle del canal
+        
+        // URL del canal para referencia directa
+        const CAPRDATOS_CHANNEL_URL = 'https://www.youtube.com/@CaprDatos';
+        
+        // INSTRUCCIONES: Si no se cargan tus videos, necesitas obtener los IDs manualmente:
+        // 1. Ve a tu video en YouTube
+        // 2. Copia el ID de la URL: youtube.com/watch?v=VIDEO_ID
+        // 3. Reemplaza los IDs de abajo con los tuyos
+        
+        // Lista de videos recientes (se actualiza manualmente o automáticamente)
+        // Formato: { id: 'VIDEO_ID', title: 'Título', isShort: false }
+        let recentVideos = [];
+        
+        // Sistema de caché para evitar peticiones excesivas
+        const CACHE_DURATION = 30 * 60 * 1000; // 30 minutos (carga más rápida)
+        let lastFetchTime = 0;
+        let cachedVideos = null;
+        
+        // Función para cargar videos usando YouTube oEmbed (no requiere API key)
+        async function fetchYouTubeVideos() {
+            const videosContainer = document.getElementById('videos-container');
+            const shortsContainer = document.getElementById('shorts-container');
+            
+            const now = Date.now();
+            
+            // Usar caché si está disponible y es reciente
+            if (cachedVideos && (now - lastFetchTime) < CACHE_DURATION) {
+                console.log('📦 Usando caché de videos (', Math.round((now - lastFetchTime) / 1000 / 60), 'minutos antiguo)');
+                displayVideos(cachedVideos, videosContainer, shortsContainer);
+                return;
+            }
+            
+            console.log('⚡ Cargando videos del canal CaprDatos automáticamente...');
+            console.log('📍 Canal objetivo:', CAPRDATOS_CHANNEL_ID);
+            
+            try {
+                // PRIMER INTENTO: Usar Invidious API (gratuito y actualizado)
+                console.log('🔄 Método 1: Intentando Invidious API...');
+                const invidiousVideos = await getVideosFromInvidious();
+                
+                if (invidiousVideos && invidiousVideos.length > 0) {
+                    console.log(`✅ ${invidiousVideos.length} videos obtenidos desde Invidious`);
+                    cachedVideos = invidiousVideos;
+                    lastFetchTime = now;
+                    displayVideos(invidiousVideos, videosContainer, shortsContainer);
+                    return;
+                }
+                
+                // SEGUNDO INTENTO: Usar RSS feed con proxies CORS
+                console.log('🔄 Método 2: Intentando RSS feed...');
+                const rssVideos = await getVideosFromRSS();
+                
+                if (rssVideos && rssVideos.length > 0) {
+                    console.log(`✅ ${rssVideos.length} videos obtenidos desde RSS`);
+                    cachedVideos = rssVideos;
+                    lastFetchTime = now;
+                    displayVideos(rssVideos, videosContainer, shortsContainer);
+                    return;
+                }
+                
+                // TERCER INTENTO: Usar YouTube Data API pública (si está disponible)
+                console.log('🔄 Método 3: Intentando YouTube Data API pública...');
+                const youtubeApiVideos = await getVideosFromYouTubeAPI();
+                
+                if (youtubeApiVideos && youtubeApiVideos.length > 0) {
+                    console.log(`✅ ${youtubeApiVideos.length} videos obtenidos desde YouTube API`);
+                    cachedVideos = youtubeApiVideos;
+                    lastFetchTime = now;
+                    displayVideos(youtubeApiVideos, videosContainer, shortsContainer);
+                    return;
+                }
+                
+                // FALLBACK: Usar lista manual si todos los métodos automáticos fallan
+                console.log('⚠️ Todos los métodos automáticos fallaron, usando lista manual');
+                const manualVideos = getManualVideoList();
+                
+                // Verificar si la lista manual tiene IDs reales (no placeholders)
+                const hasRealIds = manualVideos.some(video => !video.id.startsWith('TU_'));
+                
+                if (hasRealIds) {
+                    const videosWithInfo = manualVideos.map(video => ({
+                        id: video.id,
+                        title: 'Video de CaprDatos',
+                        thumbnail: `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`,
+                        publishedAt: video.publishedAt,
+                        isShort: video.isShort
+                    }));
+                    
+                    console.log(`✅ ${videosWithInfo.length} videos cargados desde lista manual`);
+                    cachedVideos = videosWithInfo;
+                    lastFetchTime = now;
+                    displayVideos(videosWithInfo, videosContainer, shortsContainer);
+                } else {
+                    // Si no hay IDs reales, mostrar error con instrucciones
+                    console.error('❌ No hay videos disponibles para mostrar');
+                    showErrorMessage(videosContainer, 'videos');
+                    showErrorMessage(shortsContainer, 'shorts');
+                }
+                
+            } catch (error) {
+                console.error('Error al cargar videos:', error);
+                showErrorMessage(videosContainer, 'videos');
+                showErrorMessage(shortsContainer, 'shorts');
+            }
+        }
+        
+        // Función para mostrar videos en los contenedores
+        function displayVideos(channelVideos, videosContainer, shortsContainer) {
+            // Limpiar contenedores
+            videosContainer.innerHTML = '';
+            shortsContainer.innerHTML = '';
+            
+            // Separar videos en shorts y videos largos
+            const shorts = [];
+            const longVideos = [];
+            
+            channelVideos.forEach(video => {
+                if (video.isShort) {
+                    shorts.push(video);
+                } else {
+                    longVideos.push(video);
+                }
+            });
+            
+            console.log(`📹 Videos largos: ${longVideos.length}, ⚡ Shorts: ${shorts.length}`);
+            
+            // Mostrar primeros 4 videos largos
+            if (longVideos.length > 0) {
+                longVideos.slice(0, 4).forEach((video, index) => {
+                    const videoCard = createVideoCard(video, false, index === 0); // index === 0 indica que es el último video
+                    videosContainer.appendChild(videoCard);
+                });
+                console.log(`🎬 Mostrando ${Math.min(4, longVideos.length)} videos largos`);
+            } else {
+                videosContainer.innerHTML = '<div class="loading">No hay videos largos disponibles</div>';
+            }
+            
+            // Mostrar primeros 5 shorts
+            if (shorts.length > 0) {
+                shorts.slice(0, 5).forEach((video, index) => {
+                    const videoCard = createVideoCard(video, true, index === 0); // index === 0 indica que es el último short
+                    shortsContainer.appendChild(videoCard);
+                });
+                console.log(`⚡ Mostrando ${Math.min(5, shorts.length)} shorts`);
+            } else {
+                shortsContainer.innerHTML = '<div class="loading">No hay shorts disponibles</div>';
+            }
+        }
+        
+        // Función para obtener videos del canal con información real SIMPLIFICADA
+        async function getChannelVideos() {
+            console.log('🔍 Obteniendo videos de CaprDatos...');
+            console.log('📍 Canal objetivo:', CAPRDATOS_CHANNEL_ID);
+            
+            // PRIMER INTENTO: Usar Invidious API (completamente gratuito y actualizado)
+            const invidiousVideos = await getVideosFromInvidious();
+            
+            if (invidiousVideos && invidiousVideos.length > 0) {
+                console.log('✅ Videos obtenidos desde Invidious API (gratuito y actualizado)');
+                return invidiousVideos;
+            }
+            
+            // SEGUNDO INTENTO: Usar RSS feed con proxies CORS
+            const rssVideos = await getVideosFromRSS();
+            
+            if (rssVideos && rssVideos.length > 0) {
+                console.log('✅ Videos obtenidos desde RSS feed automático (gratuito)');
+                return rssVideos;
+            }
+            
+            // TERCER INTENTO: Usar YouTube Data API con noembed (fallback rápido)
+            console.log('⚠️ RSS falló, intentando obtener info con noembed.com...');
+            const noembedVideos = await getVideosFromNoembed();
+            
+            if (noembedVideos && noembedVideos.length > 0) {
+                console.log('✅ Videos obtenidos desde noembed.com');
+                return noembedVideos;
+            }
+            
+            // FALLBACK FINAL: Usar lista manual con miniaturas directas de YouTube
+            console.log('⚠️ Todos los métodos automáticos fallaron, usando lista manual como fallback');
+            const manualVideos = getManualVideoList();
+            const videosWithInfo = [];
+            
+            console.log('🔄 Procesando', manualVideos.length, 'videos manuales con miniaturas directas...');
+            
+            for (const video of manualVideos) {
+                // Usar miniaturas directas de YouTube (más confiable)
+                videosWithInfo.push({
+                    id: video.id,
+                    title: 'Video de CaprDatos',
+                    thumbnail: `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`,
+                    publishedAt: video.publishedAt,
+                    isShort: video.isShort
+                });
+                console.log('✅ Video agregado:', video.id, '-', video.isShort ? 'Short' : 'Video largo');
+            }
+            
+            console.log('✅ Total de videos procesados:', videosWithInfo.length);
+            return videosWithInfo;
+        }
+        
+        // Función para obtener información de videos usando noembed
+        async function getVideosFromNoembed() {
+            const manualVideos = getManualVideoList();
+            const videosWithInfo = [];
+            
+            for (const video of manualVideos) {
+                try {
+                    const videoUrl = `https://www.youtube.com/watch?v=${video.id}`;
+                    const oembedUrl = `https://noembed.com/embed?url=${encodeURIComponent(videoUrl)}`;
+                    
+                    const response = await fetch(oembedUrl);
+                    if (response.ok) {
+                        const data = await response.json();
+                        videosWithInfo.push({
+                            id: video.id,
+                            title: data.title || 'Video de CaprDatos',
+                            thumbnail: data.thumbnail_url || `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`,
+                            publishedAt: data.publish_date || video.publishedAt,
+                            isShort: video.isShort
+                        });
+                        console.log('✅ Info obtenida para:', video.id, '-', data.title);
+                    } else {
+                        throw new Error('Noembed response not ok');
+                    }
+                } catch (error) {
+                    console.log('⚠️ Noembed falló para:', video.id);
+                    return null; // Si falla uno, falla todo el método
+                }
+            }
+            
+            return videosWithInfo.length > 0 ? videosWithInfo : null;
+        }
+        
+        // Función para obtener videos usando YouTube Data API pública (sin API key)
+        async function getVideosFromYouTubeAPI() {
+            console.log('📡 Intentando YouTube Data API pública...');
+            
+            try {
+                // Intentar usar el endpoint de búsqueda de YouTube sin API key
+                const searchUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/channel/${CAPRDATOS_CHANNEL_ID}&format=json`;
+                
+                const response = await fetch(searchUrl);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('✅ Datos del canal obtenidos:', data);
+                    // Este método generalmente no devuelve videos, pero confirma que el canal existe
+                    return null;
+                }
+            } catch (error) {
+                console.log('⚠️ YouTube Data API pública no disponible');
+            }
+            
+            return null;
+        }
+        
+        // Función auxiliar para extraer ID de video de RSS
+        function extractVideoIdFromRSS(item) {
+            if (item.guid && item.guid.includes('yt:video:')) {
+                return item.guid.split('yt:video:')[1];
+            }
+            if (item.link) {
+                const match = item.link.match(/[?&]v=([^&]+)/);
+                if (match) return match[1];
+            }
+            return null;
+        }
+        
+        // Función auxiliar para extraer thumbnail de RSS
+        function extractThumbnailFromRSS(item) {
+            if (item.thumbnail) return item.thumbnail;
+            if (item.media$thumbnail) return item.media$thumbnail.url;
+            return null;
+        }
+        
+        // Lista manual de videos (FALLBACK - solo se usa si RSS falla)
+        function getManualVideoList() {
+            return [
+                // ============================================
+                // VIDEOS REALES DE CAPRDATOS (FALLBACK AUTOMÁTICO)
+                // ============================================
+                
+                // ⚠️ IMPORTANTE: Reemplaza estos IDs con los de TUS videos reales
+                // Para obtener el ID de un video:
+                // 1. Ve a tu video en YouTube
+                // 2. Mira la URL: youtube.com/watch?v=XXXXX
+                // 3. XXXXX es el ID que necesitas copiar aquí
+                
+                // TUS VIDEOS MÁS RECIENTES - ACTUALIZA ESTOS IDs CON TUS VIDEOS ACTUALES
+                { id: 'wYaCNO4ewZk&t', isShort: false, publishedAt: new Date().toISOString() },
+                { id: 'yLGWFx3Mcsg', isShort: false, publishedAt: new Date().toISOString() },
+                { id: 'bJa31t5TeMM&t', isShort: false, publishedAt: new Date().toISOString() },
+                
+                // TUS SHORTS MÁS RECIENTES - ACTUALIZA ESTOS IDs CON TUS SHORTS ACTUALES
+                { id: 'h_90Q4xnELw', isShort: true, publishedAt: new Date().toISOString() },
+                { id: 'nFeEjmH8J4g', isShort: true, publishedAt: new Date().toISOString() },
+                { id: 'KVWUrcl1IGU', isShort: true, publishedAt: new Date().toISOString() },
+                { id: '0Obo-odtE6E', isShort: true, publishedAt: new Date().toISOString() },
+                
+            ];
+        }
+        
+        // Función para obtener videos automáticamente desde Invidious (API gratuita de YouTube)
+        async function getVideosFromInvidious() {
+            console.log('📡 Obteniendo videos desde Invidious API...');
+            
+            // Lista de instancias públicas de Invidious (actualizada 2026)
+            const invidiousInstances = [
+                'https://vid.puffyan.us',
+                'https://invidious.fdn.fr',
+                'https://invidious.nerdvpn.de',
+                'https://inv.tux.pizza',
+                'https://invidious.perennialte.ch',
+                'https://invidious.snopyta.org',
+                'https://yewtu.be',
+                'https://invidious.kavin.rocks',
+                'https://invidious.04.cz',
+                'https://inv.riverside.rocks'
+            ];
+            
+            // Extraer handle del ID (si es formato @handle)
+            const channelHandle = CAPRDATOS_CHANNEL_ID.startsWith('@') ? CAPRDATOS_CHANNEL_ID : CAPRDATOS_CHANNEL_ID;
+            console.log('🎯 Buscando canal:', channelHandle);
+            
+            for (const instance of invidiousInstances) {
+                try {
+                    console.log(`🔄 Intentando con instancia: ${instance}`);
+                    // Usar el handle directamente en la URL de la API
+                    const apiUrl = `${instance}/api/v1/channels/${channelHandle}/videos`;
+                    console.log('📍 URL:', apiUrl);
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        signal: AbortSignal.timeout(10000) // 10 segundos timeout
+                    });
+                    
+                    if (!response.ok) {
+                        console.log(`❌ Instancia falló con status: ${response.status}`);
+                        continue;
+                    }
+                    
+                    const data = await response.json();
+                    console.log('📊 Datos recibidos:', data ? 'Sí' : 'No', data?.length ? `${data.length} videos` : '');
+                    
+                    if (data && data.length > 0) {
+                        const videos = data.map(video => {
+                            const isShort = video.type === 'short' || 
+                                           video.title?.toLowerCase().includes('#shorts') ||
+                                           video.title?.toLowerCase().includes('short');
+                            
+                            return {
+                                id: video.videoId,
+                                title: video.title,
+                                publishedAt: video.published,
+                                isShort: isShort,
+                                thumbnail: video.videoThumbnails?.[2]?.url || `https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg`
+                            };
+                        });
+                        
+                        console.log(`✅ ${videos.length} videos obtenidos desde Invidious`);
+                        return videos;
+                    } else {
+                        console.log('⚠️ La instancia no devolvió videos');
+                    }
+                } catch (error) {
+                    console.error(`❌ Error con instancia ${instance}:`, error.message);
+                }
+            }
+            
+            console.error('❌ Todas las instancias de Invidious fallaron');
+            return null;
+        }
+        
+        // Función para obtener videos automáticamente desde RSS feed de YouTube
+        async function getVideosFromRSS() {
+            console.log('📡 Obteniendo videos desde RSS feed de YouTube...');
+            
+            // Intentar diferentes formatos de URL para el RSS feed
+            const rssUrls = [
+                `https://www.youtube.com/feeds/videos.xml?channel_id=${CAPRDATOS_CHANNEL_ID}`,
+                `https://www.youtube.com/feeds/videos.xml?channel=${CAPRDATOS_CHANNEL_ID}`,
+                `https://www.youtube.com/feeds/videos.xml?user=${CAPRDATOS_CHANNEL_ID.replace('@', '')}`
+            ];
+            
+            // Lista de proxies CORS gratuitos para intentar
+            const corsProxies = [
+                `https://api.allorigins.win/get?url=`,
+                `https://corsproxy.io/?`,
+                `https://api.codetabs.com/v1/proxy?quest=`,
+                `https://thingproxy.freeboard.io/fetch/`
+            ];
+            
+            for (const rssUrl of rssUrls) {
+                console.log('🔄 Intentando URL RSS:', rssUrl);
+                
+                for (const proxy of corsProxies) {
+                    try {
+                        const proxyUrl = proxy + encodeURIComponent(rssUrl);
+                        console.log(`🔄 Intentando con proxy: ${proxy.split('/')[2]}`);
+                        
+                        const response = await fetch(proxyUrl, {
+                            signal: AbortSignal.timeout(8000) // 8 segundos timeout
+                        });
+                        
+                        if (!response.ok) {
+                            console.log(`❌ Proxy falló con status: ${response.status}`);
+                            continue;
+                        }
+                        
+                        let xmlText;
+                        // allorigins devuelve JSON con contents
+                        if (proxy.includes('allorigins.win/get')) {
+                            const data = await response.json();
+                            xmlText = data.contents;
+                        } else {
+                            xmlText = await response.text();
+                        }
+                        
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                        
+                        const entries = xmlDoc.querySelectorAll('entry');
+                        const videos = [];
+                        
+                        entries.forEach(entry => {
+                            const videoId = entry.querySelector('videoId')?.textContent;
+                            const title = entry.querySelector('title')?.textContent;
+                            const published = entry.querySelector('published')?.textContent;
+                            const link = entry.querySelector('link')?.getAttribute('href');
+                            
+                            if (videoId) {
+                                // Detectar si es short basándonos en el link o título
+                                const isShort = link?.includes('/shorts/') || 
+                                               title?.toLowerCase().includes('#shorts') ||
+                                               title?.toLowerCase().includes('short');
+                                
+                                videos.push({
+                                    id: videoId,
+                                    title: title || 'Video de CaprDatos',
+                                    publishedAt: published || new Date().toISOString(),
+                                    isShort: isShort,
+                                    thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+                                });
+                            }
+                        });
+                        
+                        if (videos.length > 0) {
+                            console.log(`✅ ${videos.length} videos obtenidos desde RSS via proxy`);
+                            return videos;
+                        }
+                    } catch (error) {
+                        console.error(`❌ Error con proxy:`, error.message);
+                    }
+                }
+            }
+            
+            console.error('❌ Todos los métodos RSS fallaron');
+            return null;
+        }
+        
+        // Función para crear tarjeta de video
+        function createVideoCard(video, isShort, isLatest = false) {
+            const videoCard = document.createElement('div');
+            videoCard.className = 'video-card';
+            
+            // Usar miniatura de alta calidad pero cargada de forma eficiente
+            const thumbnailUrl = video.thumbnail || `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+            const buttonText = isShort ? '⚡ Ver Short' : '▶ Ver en YouTube';
+            const buttonStyle = isShort ? 'background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);' : '';
+            
+            // Badge "ÚLTIMO VIDEO" si es el más reciente
+            const latestBadge = isLatest ? `
+                <div class="latest-video-badge">🔥 ÚLTIMO VIDEO</div>
+            ` : '';
+            
+            videoCard.innerHTML = `
+                <img src="${thumbnailUrl}" 
+                     alt="${video.title}" 
+                     class="video-thumbnail"
+                     loading="eager"
+                     width="320"
+                     height="180"
+                     fetchpriority="high"
+                     onerror="this.src='https://via.placeholder.com/320x180/1a1a2e/667eea?text=Video+No+Disponible'">
+                ${latestBadge}
+                <div class="video-info">
+                    <h3 class="video-title">${video.title}</h3>
+                    <p class="video-date">${formatDate(video.publishedAt)}</p>
+                    <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" class="video-link" style="${buttonStyle}">
+                        ${buttonText}
+                    </a>
+                </div>
+            `;
+            
+            return videoCard;
+        }
+        
+        // Función para mostrar mensaje de error con instrucciones
+        function showErrorMessage(container, type) {
+            const youtubeUrl = type === 'videos' ? 
+                'https://www.youtube.com/@CaprDatos/videos' : 
+                'https://www.youtube.com/@CaprDatos/shorts';
+            
+            container.innerHTML = `
+                <div class="error-message">
+                    <h3>❌ No se pudieron cargar tus ${type}</h3>
+                    <p>El sistema intentó obtener videos del canal CaprDatos (${CAPRDATOS_CHANNEL_ID}) automáticamente, pero falló.</p>
+                    <p><strong>💡 SOLUCIÓN RÁPIDA:</strong></p>
+                    <ol style="text-align: left; margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Ve a tus videos en: <a href="${youtubeUrl}" target="_blank" style="color: #667eea;">${youtubeUrl}</a></li>
+                        <li>Copia los IDs de tus videos de la URL (youtube.com/watch?v=ID)</li>
+                        <li>Abre el archivo index.html y busca "TU_VIDEO_ID_1"</li>
+                        <li>Reemplaza los IDs con los de tus videos reales</li>
+                    </ol>
+                    <p><strong>Opciones:</strong></p>
+                    <ol style="text-align: left; margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Ver ${type} directamente en: <a href="${youtubeUrl}" target="_blank" style="color: #667eea;">${youtubeUrl}</a></li>
+                        <li>Verificar que tu canal tenga videos públicos</li>
+                        <li>Revisar la consola del navegador (F12) para más detalles</li>
+                    </ol>
+                    <p><a href="${youtubeUrl}" target="_blank" style="color: #667eea;">
+                        🔗 Ver ${type} directamente en YouTube
+                    </a></p>
+                </div>
+            `;
+        }
+        
+        // ============================================
+        // PUBLICACIONES DE COMUNIDAD (DATOS ESTÁTICOS)
+        // ============================================
+        const communityPosts = [
+            {
+                id: 1,
+                author: 'CaprDatos',
+                avatar: 'C',
+                content: '¡Gracias por ser parte de esta comunidad! 🎮 Pronto tendremos nuevos contenidos sobre curiosidades y tecnología.',
+                date: '2026-08-22',
+                emoji: '🚀'
+            },
+            {
+                id: 2,
+                author: 'CaprDatos',
+                avatar: 'C',
+                content: '¿Qué tipo de contenido les gustaría ver más? Videos, shorts, o publicaciones de comunidad? Déjenme sus ideas en los comentarios 💡',
+                date: '2026-08-20',
+                emoji: '💭'
+            },
+            {
+                id: 3,
+                author: 'CaprDatos',
+                avatar: 'C',
+                content: 'Recordatorio: Sígueme en todas mis redes sociales para no perderte ningún contenido nuevo 🔥',
+                date: '2026-08-18',
+                emoji: '📢'
+            },
+            {
+                id: 4,
+                author: 'CaprDatos',
+                avatar: 'C',
+                content: 'Trabajando en nuevos proyectos emocionantes. ¡Estén atentos! 🎯',
+                date: '2026-08-15',
+                emoji: '🛠️'
+            }
+        ];
+
+
+                    
+
+
+        // ============================================
+        // FUNCIÓN PARA CARGAR CONTENIDO DESTACADO
+        // ============================================
+        function loadFeaturedContent() {
+            const featuredContainer = document.getElementById('featured-container');
+            
+            // Contenido destacado estático (puedes modificarlo fácilmente)
+            const featuredItems = [
+                {
+                    id: 1,
+                    icon: '🔥',
+                    title: 'Video más viral',
+                    description: 'El contenido que más ha gustado a la comunidad esta semana',
+                    stats: { views: '15K', likes: '2.3K' },
+                    link: 'https://www.youtube.com/@CaprDatos/videos',
+                    featured: true
+                },
+                {
+                    id: 2,
+                    icon: '📺',
+                    title: 'Serie popular',
+                    description: 'La serie de videos que más engagement ha generado',
+                    stats: { views: '8.5K', likes: '1.2K' },
+                    link: 'https://www.youtube.com/@CaprDatos/shorts',
+                    featured: false
+                },
+                {
+                    id: 3,
+                    icon: '💬',
+                    title: 'Comunidad activa',
+                    description: 'Las publicaciones más comentadas y compartidas',
+                    stats: { comments: '450', shares: '89' },
+                    link: '#comunidad',
+                    featured: false
+                },
+                {
+                    id: 4,
+                    icon: '🎮',
+                    title: 'Noticias top',
+                    description: 'Las noticias de videojuegos más leídas del mes',
+                    stats: { reads: '3.2K', shares: '120' },
+                    link: '#noticias',
+                    featured: false
+                }
+            ];
+
+            // Limpiar contenedor
+            featuredContainer.innerHTML = '';
+
+            // Cargar contenido destacado
+            featuredItems.forEach(item => {
+                const featuredCard = document.createElement('div');
+                featuredCard.className = `featured-card ${item.featured ? 'featured' : ''}`;
+                featuredCard.onclick = () => window.open(item.link, item.link.startsWith('#') ? '_self' : '_blank');
+                
+                const badge = item.featured ? '<div class="featured-badge">⭐ Destacado</div>' : '';
+                
+                featuredCard.innerHTML = `
+                    ${badge}
+                    <div class="featured-content">
+                        <div class="featured-icon">${item.icon}</div>
+                        <h3 class="featured-title">${item.title}</h3>
+                        <p class="featured-description">${item.description}</p>
+                    </div>
+                `;
+                
+                featuredContainer.appendChild(featuredCard);
+            });
+        }
+
+        // ============================================
+        // FUNCIÓN PARA CARGAR PUBLICACIONES DE COMUNIDAD
+        // ============================================
+        function loadCommunityPosts() {
+            const communityContainer = document.getElementById('community-container');
+            
+            // Limpiar contenedor
+            communityContainer.innerHTML = '';
+            
+            // Cargar publicaciones desde el array estático
+            communityPosts.forEach(post => {
+                const postCard = document.createElement('div');
+                postCard.className = 'post-card';
+                postCard.innerHTML = `
+                    <div class="post-header">
+                        <div class="post-avatar">${post.avatar}</div>
+                        <div class="post-author">${post.author}</div>
+                        <div class="post-date">${formatDate(post.date)}</div>
+                    </div>
+                    <div class="post-content">
+                        <span class="post-emoji">${post.emoji}</span>
+                        ${post.content}
+                    </div>
+                `;
+                
+                communityContainer.appendChild(postCard);
+            });
+        }
+
+        // ============================================
+        // FUNCIÓN PARA FORMATEAR FECHAS
+        // ============================================
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            };
+            return date.toLocaleDateString('es-ES', options);
+        }
+
+        // ============================================
+        // FUNCIÓN PARA ALTERNAR MODO CLARO/OSCURO
+        // ============================================
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            // Alternar clase
+            body.classList.toggle('light-mode');
+            
+            // Actualizar icono del botón
+            if (body.classList.contains('light-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // ============================================
+        // FUNCIÓN PARA CARGAR TEMA GUARDADO
+        // ============================================
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                if (themeToggle) themeToggle.textContent = '☀️';
+            } else {
+                document.body.classList.remove('light-mode');
+                if (themeToggle) themeToggle.textContent = '🌙';
+            }
+        }
+
+        // ============================================
+        // FUNCIONES PARA EL MENÚ HAMBURGUESA
+        // ============================================
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        // ============================================
+        // FUNCIÓN PARA ACTUALIZAR FECHA DE ÚLTIMA ACTUALIZACIÓN
+        // ============================================
+        function updateLastUpdateTime() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            };
+            const lastUpdateElement = document.getElementById('last-update');
+            if (lastUpdateElement) {
+                lastUpdateElement.textContent = now.toLocaleDateString('es-ES', options);
+            }
+        }
+
+        // ============================================
+        // FUNCIÓN PARA ACTUALIZAR VIDEOS MANUALMENTE
+        // ============================================
+        function refreshVideos() {
+            console.log('🔄 Actualización manual solicitada por el usuario');
+            // Limpiar caché para forzar recarga
+            cachedVideos = null;
+            lastFetchTime = 0;
+            fetchYouTubeVideos();
+        }
+
+        // ============================================
+        // FUNCIÓN DE DIAGNÓSTICO
+        // ============================================
+        function runDiagnostics() {
+            console.log('🔧 ============================================');
+            console.log('🔧 DIAGNÓSTICO DEL SISTEMA DE VIDEOS');
+            console.log('🔧 ============================================');
+            console.log('📍 ID del canal configurado:', CAPRDATOS_CHANNEL_ID);
+            console.log('🌐 URL del canal:', CAPRDATOS_CHANNEL_URL);
+            console.log('📋 Lista manual de videos:', getManualVideoList().length, 'videos');
+            
+            // Verificar si la lista manual tiene IDs reales
+            const manualVideos = getManualVideoList();
+            const hasRealIds = manualVideos.some(video => !video.id.startsWith('TU_'));
+            console.log('� ¿Lista manual tiene IDs reales?', hasRealIds ? 'Sí' : 'No (solo placeholders)');
+            
+            console.log('�� ============================================');
+            
+            // Verificar si el canal es accesible
+            console.log('🔍 Verificando acceso al canal...');
+            fetch(CAPRDATOS_CHANNEL_URL, { mode: 'no-cors' })
+                .then(() => console.log('✅ El canal es accesible'))
+                .catch(err => console.log('❌ Error accediendo al canal:', err));
+                
+            // Mostrar instrucciones si no hay IDs reales
+            if (!hasRealIds) {
+                console.log('⚠️ ADVERTENCIA: La lista manual solo tiene placeholders.');
+                console.log('💡 NECESITAS AGREGAR LOS IDs DE TUS VIDEOS REALES:');
+                console.log('   1. Ve a youtube.com/@CaprDatos');
+                console.log('   2. Abre uno de tus videos');
+                console.log('   3. Copia el ID de la URL (youtube.com/watch?v=XXXXX)');
+                console.log('   4. Reemplaza "TU_VIDEO_ID_1" con ese ID');
+            }
+        }
+
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ejecutar diagnóstico al inicio
+            runDiagnostics();
+            
+            // Cargar tema guardado
+            loadSavedTheme();
+            
+            // Cargar contenido destacado
+            loadFeaturedContent();
+            
+            // Cargar publicaciones de comunidad
+            loadCommunityPosts();
+            
+            // Cargar videos de YouTube inmediatamente
+            fetchYouTubeVideos();
+            
+            // Actualizar fecha de última actualización
+            updateLastUpdateTime();
+            
+            // Actualizar fecha cada 24 horas (86400000 ms)
+            setInterval(updateLastUpdateTime, 86400000);
+            
+            // Actualizar videos cada 30 minutos (1800000 ms) - menos frecuente para mejor rendimiento
+            setInterval(fetchYouTubeVideos, 1800000);
+            
+            // NO actualizar automáticamente cuando el usuario vuelve a la pestaña (evita recargas innecesarias)
+            // Solo actualizar si el usuario hace clic manualmente en un botón de refresh (si se implementa)
+        });
+    </script>
+</body>
+</html>

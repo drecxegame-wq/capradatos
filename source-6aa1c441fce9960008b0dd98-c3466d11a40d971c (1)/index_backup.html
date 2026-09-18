@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaprDatos - Hub de Contenido Dinámico</title>
+    
+    <!-- Verificación de Google Search Console -->
+    <meta name="google-site-verification" content="LaFOIYcTC_8rOf3R3CwZc1BpCsmNzSu4TxbPq8T8mIY" />
+    
+    <!-- ============================================
+       METAETIQUETAS SEO Y OPEN GRAPH
+       ============================================ -->
+    
+    <!-- Descripción para SEO -->
+    <meta name="description" content="CaprDatos - Hub de contenido dinámico con videos de YouTube, comunidad activa y noticias de videojuegos. Curiosidades, tecnología y entretenimiento en un solo lugar.">
+    <meta name="keywords" content="CaprDatos, YouTube, videojuegos, tecnología, curiosidades, comunidad, gaming, entretenimiento">
+    <meta name="author" content="CaprDatos">
+    
+    <!-- Open Graph para Facebook y otras redes sociales -->
+    <meta property="og:title" content="CaprDatos - Hub de Contenido Dinámico">
+    <meta property="og:description" content="Descubre el contenido dinámico de CaprDatos: videos de YouTube, comunidad activa y noticias de videojuegos. Curiosidades y tecnología en un solo lugar.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:url" content="https://caprdatos.netlify.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CaprDatos">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card para X (Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CaprDatos - Hub de Contenido Dinámico">
+    <meta name="twitter:description" content="Descubre el contenido dinámico de CaprDatos: videos de YouTube, comunidad activa y noticias de videojuegos.">
+    <meta name="twitter:image" content="assets/logo.png">
+    
+    <!-- Metadatos adicionales para WhatsApp y otras plataformas -->
+    <meta property="og:image:alt" content="Logo de CaprDatos">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Favicon (opcional) -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    
+    <!-- Google Fonts - Fuente suave y moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           ESTILOS GLOBALES - DISEÑO GAMING/TECNOLÓGICO
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Modo claro */
+        body.light-mode {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #000000;
+        }
+
+        /* ============================================
+           NAVEGACIÓN - ESTILO MODERNO OSCURO
+           ============================================ */
+        nav {
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #667eea;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 2px solid #667eea;
+            box-shadow: 0 4px 20px rgba(250, 250, 250, 0.815);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: neon-pulse 3s ease-in-out infinite;
+        }
+
+        body.light-mode .logo-image {
+            animation: neon-pulse-light 3s ease-in-out infinite;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        /* ============================================
+           INTERRUPTOR DE MODO CLARO/OSCURO
+           ============================================ */
+        .theme-toggle {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.9) rotate(15deg);
+        }
+
+        body.light-mode .theme-toggle {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        body.light-mode .theme-toggle:hover {
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        /* ============================================
+           MENÚ HAMBURGUESA PARA MÓVILES
+           ============================================ */
+        .menu-toggle {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-toggle:active {
+            transform: scale(0.92);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        body.light-mode .menu-toggle {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        nav a:active {
+            transform: translateY(0) scale(0.96);
+        }
+
+        body.light-mode nav a {
+            color: #000000;
+        }
+
+        body.light-mode nav a:hover {
+            color: #ffffff;
+        }
+
+        /* ============================================
+           SECCIONES - DISEÑO OSCURO MODERNO
+           ============================================ */
+        section {
+            padding: 3rem 2rem;
+            min-height: 80vh;
+        }
+
+        .section-container {
+            background: rgba(24, 22, 42, 0.92);
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: 1200px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            content-visibility: auto;
+            contain-intrinsic-size: 800px;
+            position: relative;
+            animation: neon-section-flow 4s ease-in-out infinite;
+        }
+
+        body.light-mode .section-container {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            animation: neon-section-flow-light 4s ease-in-out infinite;
+        }
+
+        /* ============================================
+           TÍTULOS - ESTILO GAMING
+           ============================================ */
+        h1 {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(102, 126, 234, 0.5),
+                         0 0 40px rgba(102, 126, 234, 0.4),
+                         0 0 60px rgba(102, 126, 234, 0.3);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            animation: neon-pulse 3s ease-in-out infinite;
+        }
+
+        body.light-mode h1 {
+            animation: neon-pulse-light 3s ease-in-out infinite;
+        }
+
+        body.light-mode h1 {
+            color: #000000;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+
+        body.light-mode h2 {
+            color: #000000;
+            text-shadow: 0 0 8px rgba(255, 107, 53, 0.2);
+        }
+
+        body.light-mode p {
+            color: #000000;
+        }
+
+        body.light-mode .featured-title {
+            color: #000000;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+
+        body.light-mode .featured-description {
+            color: #333333;
+            text-shadow: 0 0 5px rgba(255, 107, 53, 0.2);
+        }
+
+        body.light-mode .featured-stats {
+            color: #000000;
+        }
+
+        body.light-mode .post-content {
+            color: #000000;
+        }
+
+        body.light-mode .post-author {
+            color: #000000;
+        }
+
+        body.light-mode .post-date {
+            color: #000000;
+        }
+
+        body.light-mode .video-title {
+            color: #ffffff;
+        }
+
+        body.light-mode .video-date {
+            color: #cccccc;
+        }
+
+        body.light-mode .news-item h3 {
+            color: #000000;
+        }
+
+        body.light-mode .news-item p {
+            color: #000000;
+        }
+
+        body.light-mode .loading {
+            color: #000000;
+        }
+
+        /* Textos específicos en negro para modo claro móvil */
+        body.light-mode .featured-section h2 {
+            color: #000000 !important;
+        }
+
+        .intro-text {
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.4),
+                         0 0 20px rgba(102, 126, 234, 0.3),
+                         0 0 30px rgba(102, 126, 234, 0.2);
+            animation: intro-text-neon-dark 3s ease-in-out infinite;
+        }
+
+        @keyframes intro-text-neon-dark {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(102, 126, 234, 0.4),
+                             0 0 20px rgba(102, 126, 234, 0.3),
+                             0 0 30px rgba(102, 126, 234, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(102, 126, 234, 0.6),
+                             0 0 30px rgba(102, 126, 234, 0.5),
+                             0 0 45px rgba(102, 126, 234, 0.4);
+            }
+        }
+
+        body.light-mode .intro-text {
+            color: #000000 !important;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.4),
+                         0 0 20px rgba(255, 107, 53, 0.3),
+                         0 0 30px rgba(255, 107, 53, 0.2);
+            animation: intro-text-neon-light 3s ease-in-out infinite;
+        }
+
+        @keyframes intro-text-neon-light {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 107, 53, 0.4),
+                             0 0 20px rgba(255, 107, 53, 0.3),
+                             0 0 30px rgba(255, 107, 53, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(255, 107, 53, 0.6),
+                             0 0 30px rgba(255, 107, 53, 0.5),
+                             0 0 45px rgba(255, 107, 53, 0.4);
+            }
+        }
+
+        /* ============================================
+           HEADER BRAND - CONTENEDOR DE LOGO Y TÍTULO
+           ============================================ */
+        .header-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+            transition: all 0.3s ease;
+            animation: neon-pulse 3s ease-in-out infinite;
+        }
+
+        body.light-mode .brand-logo {
+            animation: neon-pulse-light 3s ease-in-out infinite;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* ============================================
+           SECCIÓN DESTACADA - CONTENIDO VIRAL
+           ============================================ */
+        .featured-section {
+            margin-top: 2rem;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .featured-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            animation: neon-flow 3s ease-in-out infinite;
+        }
+
+        body.light-mode .featured-card {
+            animation: neon-flow-light 3s ease-in-out infinite;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            border-color: #667eea;
+        }
+
+        .featured-card:hover .featured-icon {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .featured-card.featured {
+            border: 2px solid #ff6b35;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .featured-content {
+            padding: 1.5rem;
+        }
+
+        .featured-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-title {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .featured-description {
+            color: #ffffff;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+            font-weight: 400;
+        }
+
+        .featured-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #667eea;
+        }
+
+        .featured-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* ============================================
+           BOTONES DE ACCIÓN LLAMATIVOS
+           ============================================ */
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .action-btn:active {
+            transform: translateY(-1px) scale(0.96);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        .action-btn {
+            animation: pulse-glow 2.5s ease-in-out infinite;
+        }
+
+        .action-btn:hover {
+            animation-play-state: paused;
+        }
+
+        .action-btn:hover .action-btn-icon {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .action-btn-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .youtube-btn {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            border: 2px solid #ff0000;
+        }
+
+        .youtube-btn:hover {
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            border-color: #cc0000;
+        }
+
+        .support-btn {
+            background: linear-gradient(135deg, #00c853 0%, #009624 100%);
+            border: 2px solid #00c853;
+        }
+
+        .support-btn:hover {
+            background: linear-gradient(135deg, #009624 0%, #006416 100%);
+            border-color: #009624;
+        }
+
+        .action-btn-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            font-size: 2rem;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.5),
+                         0 0 20px rgba(102, 126, 234, 0.4),
+                         0 0 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            background: rgba(102, 126, 234, 0.1);
+            animation: neon-pulse 3s ease-in-out infinite;
+        }
+
+        body.light-mode h2 {
+            animation: neon-pulse-light 3s ease-in-out infinite;
+            background: rgba(255, 107, 53, 0.1);
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5),
+                         0 0 20px rgba(255, 107, 53, 0.4),
+                         0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        h3 {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.5),
+                         0 0 20px rgba(102, 126, 234, 0.4),
+                         0 0 30px rgba(102, 126, 234, 0.3);
+            animation: neon-pulse 3s ease-in-out infinite;
+        }
+
+        body.light-mode h3 {
+            color: #000000;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5),
+                         0 0 20px rgba(255, 107, 53, 0.4),
+                         0 0 30px rgba(255, 107, 53, 0.3);
+            animation: neon-pulse-light 3s ease-in-out infinite;
+        }
+
+        p {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-shadow: 0 0 8px rgba(102, 126, 234, 0.4),
+                         0 0 16px rgba(102, 126, 234, 0.3),
+                         0 0 24px rgba(102, 126, 234, 0.2);
+        }
+
+        body.light-mode p {
+            text-shadow: 0 0 8px rgba(255, 107, 53, 0.4),
+                         0 0 16px rgba(255, 107, 53, 0.3),
+                         0 0 24px rgba(255, 107, 53, 0.2);
+        }
+
+        /* ============================================
+           GRID DE VIDEOS DE YOUTUBE - TARJETAS OSCURAS
+           ============================================ */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            will-change: transform;
+            animation: neon-flow 3s ease-in-out infinite;
+        }
+
+        body.light-mode .video-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            animation: neon-flow-light 3s ease-in-out infinite;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            border-color: #667eea;
+        }
+
+        .video-card:hover .video-thumbnail {
+            transform: scale(1.03);
+            transition: transform 0.3s ease;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            letter-spacing: 0.3px;
+            font-weight: 500;
+        }
+
+        body.light-mode .video-title {
+            color: #ffffff;
+        }
+
+        .video-date {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        body.light-mode .video-date {
+            color: #cccccc;
+        }
+
+        .video-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .video-link:hover {
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            transform: translateY(-2px) scale(1.08);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+        }
+
+        .video-link:active {
+            transform: translateY(0) scale(0.96);
+        }
+
+        /* ============================================
+           SECCIÓN DE COMUNIDAD - MURO DE PUBLICACIONES
+           ============================================ */
+        .community-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .post-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0c29 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: neon-flow 3s ease-in-out infinite;
+        }
+
+        body.light-mode .post-card {
+            animation: neon-flow-light 3s ease-in-out infinite;
+        }
+
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .post-card:hover .post-avatar {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            margin-right: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .post-author {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .post-date {
+            color: #888;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
+        .post-content {
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .post-emoji {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        /* ============================================
+           ENLACES SOCIALES - ESTILO GAMING
+           ============================================ */
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            animation: neon-flow 3s ease-in-out infinite;
+        }
+
+        body.light-mode .social-link {
+            animation: neon-flow-light 3s ease-in-out infinite;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-link:active {
+            transform: translateY(-1px) scale(0.97);
+        }
+
+        .x-link {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            border: 1px solid #333;
+        }
+
+        .x-link:hover {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+        }
+
+        .facebook-link {
+            background: linear-gradient(135deg, #1877F2 0%, #0d5bb8 100%);
+        }
+
+        .threads-link {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            border: 1px solid #333;
+        }
+
+        .instagram-link {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        /* ============================================
+           LOADING Y MENSAJES
+           ============================================ */
+        .loading {
+            text-align: center;
+            color: #888;
+            font-size: 1.2rem;
+            padding: 2rem;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        /* ============================================
+           ANIMACIONES NEÓN UNIFICADAS (OPTIMIZACIÓN)
+           ============================================ */
+        @keyframes neon-pulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(102, 126, 234, 0.4),
+                            0 0 20px rgba(102, 126, 234, 0.3),
+                            0 0 30px rgba(102, 126, 234, 0.2);
+                border-color: rgba(102, 126, 234, 0.8);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.6),
+                            0 0 35px rgba(102, 126, 234, 0.5),
+                            0 0 50px rgba(102, 126, 234, 0.4);
+                border-color: rgba(102, 126, 234, 1);
+            }
+        }
+
+        @keyframes neon-pulse-light {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 107, 53, 0.4),
+                            0 0 20px rgba(255, 107, 53, 0.3),
+                            0 0 30px rgba(255, 107, 53, 0.2);
+                border-color: rgba(255, 107, 53, 0.8);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 107, 53, 0.6),
+                            0 0 35px rgba(255, 107, 53, 0.5),
+                            0 0 50px rgba(255, 107, 53, 0.4);
+                border-color: rgba(255, 107, 53, 1);
+            }
+        }
+
+        @keyframes neon-flow {
+            0%, 100% {
+                box-shadow: 0 0 3px rgba(102, 126, 234, 0.2),
+                            0 0 6px rgba(102, 126, 234, 0.1);
+                border-color: rgba(102, 126, 234, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 6px rgba(102, 126, 234, 0.4),
+                            0 0 12px rgba(102, 126, 234, 0.3);
+                border-color: rgba(102, 126, 234, 0.5);
+            }
+        }
+
+        @keyframes neon-flow-light {
+            0%, 100% {
+                box-shadow: 0 0 3px rgba(255, 107, 53, 0.2),
+                            0 0 6px rgba(255, 107, 53, 0.1);
+                border-color: rgba(255, 107, 53, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 6px rgba(255, 107, 53, 0.4),
+                            0 0 12px rgba(255, 107, 53, 0.3);
+                border-color: rgba(255, 107, 53, 0.5);
+            }
+        }
+
+        @keyframes neon-section-flow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(102, 126, 234, 0.3),
+                            0 0 10px rgba(102, 126, 234, 0.2),
+                            0 0 15px rgba(102, 126, 234, 0.1),
+                            inset 0 0 5px rgba(102, 126, 234, 0.1);
+                border-color: rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 10px rgba(102, 126, 234, 0.5),
+                            0 0 20px rgba(102, 126, 234, 0.4),
+                            0 0 30px rgba(102, 126, 234, 0.3),
+                            inset 0 0 10px rgba(102, 126, 234, 0.2);
+                border-color: rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        @keyframes neon-section-flow-light {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(255, 107, 53, 0.3),
+                            0 0 10px rgba(255, 107, 53, 0.2),
+                            0 0 15px rgba(255, 107, 53, 0.1),
+                            inset 0 0 5px rgba(255, 107, 53, 0.1);
+                border-color: rgba(255, 107, 53, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 10px rgba(255, 107, 53, 0.5),
+                            0 0 20px rgba(255, 107, 53, 0.4),
+                            0 0 30px rgba(255, 107, 53, 0.3),
+                            inset 0 0 10px rgba(255, 107, 53, 0.2);
+                border-color: rgba(255, 107, 53, 0.6);
+            }
+        }
+
+        @keyframes intro-text-neon-dark {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(102, 126, 234, 0.4),
+                             0 0 20px rgba(102, 126, 234, 0.3),
+                             0 0 30px rgba(102, 126, 234, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(102, 126, 234, 0.6),
+                             0 0 30px rgba(102, 126, 234, 0.5),
+                             0 0 45px rgba(102, 126, 234, 0.4);
+            }
+        }
+
+        @keyframes intro-text-neon-light {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 107, 53, 0.4),
+                             0 0 20px rgba(255, 107, 53, 0.3),
+                             0 0 30px rgba(255, 107, 53, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(255, 107, 53, 0.6),
+                             0 0 30px rgba(255, 107, 53, 0.5),
+                             0 0 45px rgba(255, 107, 53, 0.4);
+            }
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .error-message {
+            text-align: center;
+            color: #ff6b6b;
+            padding: 2rem;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - OPTIMIZADO PARA MÓVIL
+           ============================================ */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .header-brand {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .brand-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 0.5rem;
+            }
+
+            .logo-container {
+                margin-bottom: 0.5rem;
+            }
+
+            .logo-image {
+                width: 45px;
+                height: 45px;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
+            /* Menú hamburguesa para móviles */
+            .menu-toggle {
+                display: flex;
+                position: fixed;
+                top: 0.8rem;
+                right: 0.8rem;
+                z-index: 1002;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 280px;
+                height: 100vh;
+                background: rgba(15, 12, 41, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1.2rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+                padding: 2rem 1rem;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav a {
+                font-size: 1.1rem;
+                padding: 0.8rem 1.5rem;
+                text-align: center;
+                width: 100%;
+            }
+
+            body.light-mode nav ul {
+                background: rgba(255, 255, 255, 0.98);
+            }
+
+            body.light-mode nav a {
+                color: #000000;
+            }
+
+            .section-container {
+                margin: 0.8rem;
+                padding: 1.2rem;
+            }
+
+            section {
+                padding: 2rem 0.5rem;
+            }
+
+            .videos-grid,
+            .featured-grid,
+            .community-posts,
+            .social-links {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* Optimización de animaciones para móvil */
+            .section-container,
+            .featured-card,
+            .video-card,
+            .post-card,
+            .social-link {
+                animation-duration: 6s; /* Animaciones más lentas en móvil */
+            }
+
+            /* Desactivar animaciones en dispositivos de gama baja */
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+
+            /* Optimización de imágenes para móvil */
+            .video-thumbnail {
+                height: 160px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .action-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav>
+        <div class="nav-container">
+            <!-- Logo de CaprDatos (cargado desde base de datos) -->
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="logo-image" loading="lazy" width="60" height="60">
+                <div class="logo-text" style="display: none;">
+                    <span style="color: white;">Capr</span><span style="color: #ff6b35;">Datos</span>
+                </div>
+            </div>
+            
+            <!-- Botón hamburguesa para móviles -->
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Menú de navegación -->
+            <ul id="nav-menu">
+                <li><a href="#principal" onclick="closeMenu()">🏠 Principal</a></li>
+                <li><a href="#videos" onclick="closeMenu()">🎬 Videos</a></li>
+                <li><a href="#shorts" onclick="closeMenu()">⚡ Shorts</a></li>
+                <li><a href="#comunidad" onclick="closeMenu()">💬 Comunidad</a></li>
+                <li><a href="#contactos" onclick="closeMenu()">📱 Contactos</a></li>
+                <li><a href="#noticias" onclick="closeMenu()">🎮 Noticias</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">🌙</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección Principal con Bienvenidos -->
+    <section id="principal">
+        <div class="section-container">
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>Bienvenidos</h1>
+            </header>
+            <p class="intro-text" style="text-align: center; color: #e0e0e0; font-size: 1.2rem; margin-bottom: 2rem;">
+                Explora el contenido dinámico de CaprDatos: videos, comunidad y noticias del mundo tecnológico
+            </p>
+
+            <!-- Sección Destacada - Contenido Viral -->
+            <div class="featured-section">
+                <h2 class="featured-title" style="text-align: center; margin-bottom: 1.5rem; color: #ffffff;">🔥 Contenido Destacado</h2>
+                <div class="featured-grid" id="featured-container">
+                    <!-- El contenido destacado se cargará dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="action-buttons">
+                <a href="https://www.youtube.com/@CaprDatos?sub_confirmation=1" target="_blank" class="action-btn youtube-btn">
+                    <span class="action-btn-icon">🎬</span>
+                    Suscríbete al Canal
+                </a>
+                <a href="#contactos" class="action-btn support-btn">
+                    <span class="action-btn-icon">🛠️</span>
+                    Soporte Técnico
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Videos de YouTube (Feed RSS Dinámico) -->
+    <section id="videos">
+        <div class="section-container">
+            <!-- Header Brand con Logo y Título -->
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>🎬 Videos Recientes</h1>
+            </header>
+            <h2>Últimos videos de CaprDatos</h2>
+            
+            <!-- Contenedor del grid de videos -->
+            <div class="videos-grid" id="videos-container">
+                <div class="loading">Cargando videos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Shorts Recientes -->
+    <section id="shorts">
+        <div class="section-container">
+            <!-- Header Brand con Logo y Título -->
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>⚡ Shorts Recientes</h1>
+            </header>
+            <h2>Contenido corto y dinámico</h2>
+            
+            <!-- Contenedor del grid de shorts -->
+            <div class="videos-grid" id="shorts-container">
+                <div class="loading">Cargando shorts</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Comunidad (Publicaciones Estáticas) -->
+    <section id="comunidad">
+        <div class="section-container">
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>💬 Comunidad</h1>
+            </header>
+            <h2>Muro de Publicaciones</h2>
+            
+            <!-- Contenedor de publicaciones de comunidad -->
+            <div class="community-posts" id="community-container">
+                <!-- Las publicaciones se cargarán mediante JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contactos -->
+    <section id="contactos">
+        <div class="section-container">
+            <header class="header-brand">
+                <img src="assets/logo.png" alt="CaprDatos Logo" class="brand-logo" loading="lazy" width="80" height="80">
+                <h1>📱 Contactos</h1>
+            </header>
+            <h2>Conéctate conmigo</h2>
+            
+            <div class="social-links">
+                <a href="https://x.com/drecxegame" target="_blank" class="social-link x-link">
+                    🐦 X (Twitter)
+                </a>
+                <a href="https://www.facebook.com/drecxegame/" target="_blank" class="social-link facebook-link">
+                    📘 Facebook
+                </a>
+                <a href="https://www.threads.com/@drecx_egame?hl=es-la" target="_blank" class="social-link threads-link">
+                    🧵 Threads
+                </a>
+                <a href="https://www.instagram.com/drecx_egame/" target="_blank" class="social-link instagram-link">
+                    📷 Instagram
+                </a>
+                <a href="https://www.youtube.com/@CaprDatos" target="_blank" class="social-link" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);">
+                    🎬 YouTube
+                </a>
+                <a href="https://www.tiktok.com/@caprdatos" target="_blank" class="social-link" style="background: linear-gradient(135deg, #000000 0%, #25f4ee 100%);">
+                    🎵 TikTok
+                </a>
+            </div>
+
+            <!-- Botones de Acción Adicionales -->
+            <div class="action-buttons" style="margin-top: 3rem;">
+                <a href="https://www.youtube.com/@CaprDatos?sub_confirmation=1" target="_blank" class="action-btn youtube-btn">
+                    <span class="action-btn-icon">🎬</span>
+                    Suscríbete al Canal
+                </a>
+                <a href="mailto:soporte@caprdatos.com" class="action-btn support-btn">
+                    <span class="action-btn-icon">📧</span>
+                    Email de Soporte
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Noticias -->
+    <section id="noticias">
+        <div class="section-container">
+            <h1>🎮 Noticias de Videojuegos</h1>
+            <h2>Fuentes Confiables</h2>
+            
+            <div class="social-links">
+                <a href="https://www.ign.com/es/games" target="_blank" class="social-link" style="background: linear-gradient(135deg, #ff7300 0%, #ff5500 100%);">
+                    🔥 IGN España
+                </a>
+                <a href="https://www.eurogamer.es/" target="_blank" class="social-link" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);">
+                    🎮 Eurogamer
+                </a>
+                <a href="https://www.3djuegos.com/" target="_blank" class="social-link" style="background: linear-gradient(135deg, #0066cc 0%, #004499 100%);">
+                    🕹️ 3DJuegos
+                </a>
+                <a href="https://www.meristation.com/" target="_blank" class="social-link" style="background: linear-gradient(135deg, #9900ff 0%, #6600cc 100%);">
+                    ⚡ MeriStation
+                </a>
+                <a href="https://www.hobbyconsolas.com/" target="_blank" class="social-link" style="background: linear-gradient(135deg, #ff6600 0%, #cc5200 100%);">
+                    🎯 HobbyConsolas
+                </a>
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: center; color: #888;">
+                <p>Última actualización: <span id="last-update">Cargando...</span></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ============================================
+        // CONFIGURACIÓN Y DATOS
+        // ============================================
+        
+        // ============================================
+        // VIDEOS DE YOUTUBE - CONFIGURACIÓN
+        // ============================================
+        
+        // ID del canal de CaprDatos (proporcionado por el usuario)
+        const CAPRDATOS_CHANNEL_ID = 'UC2dJYOz-nnRx665Xx3RKQxQ';
+        
+        // Lista de videos recientes (se actualiza manualmente o automáticamente)
+        // Formato: { id: 'VIDEO_ID', title: 'Título', isShort: false }
+        let recentVideos = [];
+        
+        // Sistema de caché para evitar peticiones excesivas
+        const CACHE_DURATION = 30 * 60 * 1000; // 30 minutos
+        let lastFetchTime = 0;
+        let cachedVideos = null;
+        
+        // Función para cargar videos usando YouTube oEmbed (no requiere API key)
+        async function fetchYouTubeVideos() {
+            const videosContainer = document.getElementById('videos-container');
+            const shortsContainer = document.getElementById('shorts-container');
+            
+            const now = Date.now();
+            
+            // Usar caché si está disponible y es reciente
+            if (cachedVideos && (now - lastFetchTime) < CACHE_DURATION) {
+                console.log('� Usando caché de videos (', Math.round((now - lastFetchTime) / 1000 / 60), 'minutos antiguo)');
+                displayVideos(cachedVideos, videosContainer, shortsContainer);
+                return;
+            }
+            
+            console.log('� Cargando videos del canal CaprDatos...');
+            console.log('⏰ Última actualización:', new Date().toLocaleTimeString());
+            
+            try {
+                // Método 1: Intentar usar YouTube oEmbed para obtener videos del canal
+                // Usaremos una lista manual de videos recientes que se puede actualizar
+                const channelVideos = await getChannelVideos();
+                
+                if (channelVideos && channelVideos.length > 0) {
+                    console.log(`✅ Se encontraron ${channelVideos.length} videos en total`);
+                    
+                    // Guardar en caché
+                    cachedVideos = channelVideos;
+                    lastFetchTime = now;
+                    
+                    displayVideos(channelVideos, videosContainer, shortsContainer);
+                    
+                    console.log('✅ Videos cargados exitosamente');
+                    
+                } else {
+                    throw new Error('No se encontraron videos');
+                }
+            } catch (error) {
+                console.error('Error al cargar videos:', error);
+                showErrorMessage(videosContainer, 'videos');
+                showErrorMessage(shortsContainer, 'shorts');
+            }
+        }
+        
+        // Función para mostrar videos en los contenedores
+        function displayVideos(channelVideos, videosContainer, shortsContainer) {
+            // Limpiar contenedores
+            videosContainer.innerHTML = '';
+            shortsContainer.innerHTML = '';
+            
+            // Separar videos en shorts y videos largos
+            const shorts = [];
+            const longVideos = [];
+            
+            channelVideos.forEach(video => {
+                if (video.isShort) {
+                    shorts.push(video);
+                } else {
+                    longVideos.push(video);
+                }
+            });
+            
+            console.log(`📹 Videos largos: ${longVideos.length}, ⚡ Shorts: ${shorts.length}`);
+            
+            // Mostrar primeros 4 videos largos
+            if (longVideos.length > 0) {
+                longVideos.slice(0, 4).forEach(video => {
+                    const videoCard = createVideoCard(video, false);
+                    videosContainer.appendChild(videoCard);
+                });
+                console.log(`🎬 Mostrando ${Math.min(4, longVideos.length)} videos largos`);
+            } else {
+                videosContainer.innerHTML = '<div class="loading">No hay videos largos disponibles</div>';
+            }
+            
+            // Mostrar primeros 5 shorts
+            if (shorts.length > 0) {
+                shorts.slice(0, 5).forEach(video => {
+                    const videoCard = createVideoCard(video, true);
+                    shortsContainer.appendChild(videoCard);
+                });
+                console.log(`⚡ Mostrando ${Math.min(5, shorts.length)} shorts`);
+            } else {
+                shortsContainer.innerHTML = '<div class="loading">No hay shorts disponibles</div>';
+            }
+        }
+        
+        // Función para obtener videos del canal con información real SIMPLIFICADA
+        async function getChannelVideos() {
+            console.log('🔍 Obteniendo videos de CaprDatos...');
+            
+            // PRIMER INTENTO: Usar RSS feed automático de YouTube
+            const rssVideos = await getVideosFromRSS();
+            
+            if (rssVideos && rssVideos.length > 0) {
+                console.log('✅ Videos obtenidos desde RSS feed automático');
+                return rssVideos;
+            }
+            
+            // FALLBACK: Usar lista manual si RSS falla
+            console.log('⚠️ RSS falló, usando lista manual como fallback');
+            const manualVideos = getManualVideoList();
+            const videosWithInfo = [];
+            
+            console.log('🔄 Procesando', manualVideos.length, 'videos con noembed.com...');
+            
+            for (const video of manualVideos) {
+                try {
+                    const videoUrl = `https://www.youtube.com/watch?v=${video.id}`;
+                    const oembedUrl = `https://noembed.com/embed?url=${encodeURIComponent(videoUrl)}`;
+                    
+                    const response = await fetch(oembedUrl);
+                    if (response.ok) {
+                        const data = await response.json();
+                        videosWithInfo.push({
+                            id: video.id,
+                            title: data.title || 'Video de CaprDatos',
+                            thumbnail: data.thumbnail_url || `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`,
+                            publishedAt: data.publish_date || video.publishedAt,
+                            isShort: video.isShort
+                        });
+                        console.log('✅ Info obtenida para:', video.id, '-', data.title);
+                    } else {
+                        // Si noembed falla, usar miniaturas de YouTube
+                        videosWithInfo.push({
+                            id: video.id,
+                            title: 'Video de CaprDatos',
+                            thumbnail: `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`,
+                            publishedAt: video.publishedAt,
+                            isShort: video.isShort
+                        });
+                        console.log('⚠️ Noembed falló para:', video.id, ', usando miniatura por defecto');
+                    }
+                } catch (error) {
+                    console.log('❌ Error procesando video:', video.id, error);
+                    // Usar miniatura por defecto como fallback
+                    videosWithInfo.push({
+                        id: video.id,
+                        title: 'Video de CaprDatos',
+                        thumbnail: `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`,
+                        publishedAt: video.publishedAt,
+                        isShort: video.isShort
+                    });
+                }
+            }
+            
+            console.log('✅ Total de videos procesados:', videosWithInfo.length);
+            return videosWithInfo;
+        }
+        
+        // Función auxiliar para extraer ID de video de RSS
+        function extractVideoIdFromRSS(item) {
+            if (item.guid && item.guid.includes('yt:video:')) {
+                return item.guid.split('yt:video:')[1];
+            }
+            if (item.link) {
+                const match = item.link.match(/[?&]v=([^&]+)/);
+                if (match) return match[1];
+            }
+            return null;
+        }
+        
+        // Función auxiliar para extraer thumbnail de RSS
+        function extractThumbnailFromRSS(item) {
+            if (item.thumbnail) return item.thumbnail;
+            if (item.media$thumbnail) return item.media$thumbnail.url;
+            return null;
+        }
+        
+        // Lista manual de videos (FALLBACK - solo se usa si RSS falla)
+        function getManualVideoList() {
+            return [
+                // ============================================
+                // VIDEOS REALES DE CAPRDATOS (FALLBACK AUTOMÁTICO)
+                // ============================================
+                
+                // TUS VIDEOS MÁS RECIENTES - ACTUALIZA ESTOS IDs CON TUS VIDEOS ACTUALES
+                { id: 'wYaCNO4ewZk', isShort: false, publishedAt: new Date().toISOString() },
+                { id: 'yLGWFx3Mcsg', isShort: false, publishedAt: new Date().toISOString() },
+                { id: 'bJa31t5TeMM', isShort: false, publishedAt: new Date().toISOString() },
+                
+                // TUS SHORTS MÁS RECIENTES - ACTUALIZA ESTOS IDs CON TUS SHORTS ACTUALES
+                { id: 'KVWUrcl1IGU', isShort: true, publishedAt: new Date().toISOString() },
+                { id: 'vm6dXVuuIhw', isShort: true, publishedAt: new Date().toISOString() },
+                { id: 'lKZmUNgyZtY', isShort: true, publishedAt: new Date().toISOString() },
+                { id: '0Obo-odtE6E', isShort: true, publishedAt: new Date().toISOString() },
+                
+            ];
+        }
+        
+        // Función para obtener videos automáticamente desde RSS feed de YouTube
+        async function getVideosFromRSS() {
+            console.log('📡 Obteniendo videos desde RSS feed de YouTube...');
+            
+            const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${CAPRDATOS_CHANNEL_ID}`;
+            
+            try {
+                const response = await fetch(rssUrl);
+                if (!response.ok) {
+                    throw new Error('No se pudo obtener el RSS feed');
+                }
+                
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                
+                const entries = xmlDoc.querySelectorAll('entry');
+                const videos = [];
+                
+                entries.forEach(entry => {
+                    const videoId = entry.querySelector('videoId')?.textContent;
+                    const title = entry.querySelector('title')?.textContent;
+                    const published = entry.querySelector('published')?.textContent;
+                    const link = entry.querySelector('link')?.getAttribute('href');
+                    
+                    if (videoId) {
+                        // Detectar si es short basándonos en el link o título
+                        const isShort = link?.includes('/shorts/') || 
+                                       title?.toLowerCase().includes('#shorts') ||
+                                       title?.toLowerCase().includes('short');
+                        
+                        videos.push({
+                            id: videoId,
+                            title: title || 'Video de CaprDatos',
+                            publishedAt: published || new Date().toISOString(),
+                            isShort: isShort
+                        });
+                    }
+                });
+                
+                console.log(`✅ ${videos.length} videos obtenidos desde RSS`);
+                return videos;
+                
+            } catch (error) {
+                console.error('❌ Error obteniendo RSS:', error);
+                return null;
+            }
+        }
+        
+        // Función para crear tarjeta de video
+        function createVideoCard(video, isShort) {
+            const videoCard = document.createElement('div');
+            videoCard.className = 'video-card';
+            
+            const thumbnailUrl = video.thumbnail || `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
+            const buttonText = isShort ? '⚡ Ver Short' : '▶ Ver en YouTube';
+            const buttonStyle = isShort ? 'background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);' : '';
+            
+            videoCard.innerHTML = `
+                <img src="${thumbnailUrl}" 
+                     alt="${video.title}" 
+                     class="video-thumbnail"
+                     loading="lazy"
+                     width="320"
+                     height="180"
+                     onerror="this.src='https://via.placeholder.com/320x180/1a1a2e/667eea?text=Video+No+Disponible'">
+                <div class="video-info">
+                    <h3 class="video-title">${video.title}</h3>
+                    <p class="video-date">${formatDate(video.publishedAt)}</p>
+                    <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" class="video-link" style="${buttonStyle}">
+                        ${buttonText}
+                    </a>
+                </div>
+            `;
+            
+            return videoCard;
+        }
+        
+        // Función para mostrar mensaje de error con instrucciones
+        function showErrorMessage(container, type) {
+            const youtubeUrl = type === 'videos' ? 
+                'https://www.youtube.com/@CaprDatos/videos' : 
+                'https://www.youtube.com/@CaprDatos/shorts';
+            
+            container.innerHTML = `
+                <div class="error-message">
+                    <h3>❌ No se pudieron cargar tus ${type}</h3>
+                    <p>El sistema intentó obtener videos del canal CaprDatos (${CAPRDATOS_CHANNEL_ID}) automáticamente, pero falló.</p>
+                    <p><strong>Opciones:</strong></p>
+                    <ol style="text-align: left; margin: 1rem 0; padding-left: 1.5rem;">
+                        <li>Ver ${type} directamente en: <a href="${youtubeUrl}" target="_blank" style="color: #667eea;">${youtubeUrl}</a></li>
+                        <li>Verificar que tu canal tenga videos públicos</li>
+                        <li>Revisar la consola del navegador (F12) para más detalles</li>
+                    </ol>
+                    <p><a href="${youtubeUrl}" target="_blank" style="color: #667eea;">
+                        🔗 Ver ${type} directamente en YouTube
+                    </a></p>
+                </div>
+            `;
+        }
+        
+        // ============================================
+        // PUBLICACIONES DE COMUNIDAD (DATOS ESTÁTICOS)
+        // ============================================
+        const communityPosts = [
+            {
+                id: 1,
+                author: 'CaprDatos',
+                avatar: 'C',
+                content: '¡Gracias por ser parte de esta comunidad! 🎮 Pronto tendremos nuevos contenidos sobre curiosidades y tecnología.',
+                date: '2026-08-22',
+                emoji: '🚀'
+            },
+            {
+                id: 2,
+                author: 'CaprDatos',
+                avatar: 'C',
+                content: '¿Qué tipo de contenido les gustaría ver más? Videos, shorts, o publicaciones de comunidad? Déjenme sus ideas en los comentarios 💡',
+                date: '2026-08-20',
+                emoji: '💭'
+            },
+            {
+                id: 3,
+                author: 'CaprDatos',
+                avatar: 'C',
+                content: 'Recordatorio: Sígueme en todas mis redes sociales para no perderte ningún contenido nuevo 🔥',
+                date: '2026-08-18',
+                emoji: '📢'
+            },
+            {
+                id: 4,
+                author: 'CaprDatos',
+                avatar: 'C',
+                content: 'Trabajando en nuevos proyectos emocionantes. ¡Estén atentos! 🎯',
+                date: '2026-08-15',
+                emoji: '🛠️'
+            }
+        ];
+
+
+                    
+
+
+        // ============================================
+        // FUNCIÓN PARA CARGAR CONTENIDO DESTACADO
+        // ============================================
+        function loadFeaturedContent() {
+            const featuredContainer = document.getElementById('featured-container');
+            
+            // Contenido destacado estático (puedes modificarlo fácilmente)
+            const featuredItems = [
+                {
+                    id: 1,
+                    icon: '🔥',
+                    title: 'Video más viral',
+                    description: 'El contenido que más ha gustado a la comunidad esta semana',
+                    stats: { views: '15K', likes: '2.3K' },
+                    link: 'https://www.youtube.com/@CaprDatos/videos',
+                    featured: true
+                },
+                {
+                    id: 2,
+                    icon: '📺',
+                    title: 'Serie popular',
+                    description: 'La serie de videos que más engagement ha generado',
+                    stats: { views: '8.5K', likes: '1.2K' },
+                    link: 'https://www.youtube.com/@CaprDatos/shorts',
+                    featured: false
+                },
+                {
+                    id: 3,
+                    icon: '💬',
+                    title: 'Comunidad activa',
+                    description: 'Las publicaciones más comentadas y compartidas',
+                    stats: { comments: '450', shares: '89' },
+                    link: '#comunidad',
+                    featured: false
+                },
+                {
+                    id: 4,
+                    icon: '🎮',
+                    title: 'Noticias top',
+                    description: 'Las noticias de videojuegos más leídas del mes',
+                    stats: { reads: '3.2K', shares: '120' },
+                    link: '#noticias',
+                    featured: false
+                }
+            ];
+
+            // Limpiar contenedor
+            featuredContainer.innerHTML = '';
+
+            // Cargar contenido destacado
+            featuredItems.forEach(item => {
+                const featuredCard = document.createElement('div');
+                featuredCard.className = `featured-card ${item.featured ? 'featured' : ''}`;
+                featuredCard.onclick = () => window.open(item.link, item.link.startsWith('#') ? '_self' : '_blank');
+                
+                const badge = item.featured ? '<div class="featured-badge">⭐ Destacado</div>' : '';
+                
+                featuredCard.innerHTML = `
+                    ${badge}
+                    <div class="featured-content">
+                        <div class="featured-icon">${item.icon}</div>
+                        <h3 class="featured-title">${item.title}</h3>
+                        <p class="featured-description">${item.description}</p>
+                        <div class="featured-stats">
+                            ${item.stats.views ? `<div class="featured-stat">👁 ${item.stats.views}</div>` : ''}
+                            ${item.stats.likes ? `<div class="featured-stat">👍 ${item.stats.likes}</div>` : ''}
+                            ${item.stats.comments ? `<div class="featured-stat">💬 ${item.stats.comments}</div>` : ''}
+                            ${item.stats.shares ? `<div class="featured-stat">🔗 ${item.stats.shares}</div>` : ''}
+                            ${item.stats.reads ? `<div class="featured-stat">📖 ${item.stats.reads}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                featuredContainer.appendChild(featuredCard);
+            });
+        }
+
+        // ============================================
+        // FUNCIÓN PARA CARGAR PUBLICACIONES DE COMUNIDAD
+        // ============================================
+        function loadCommunityPosts() {
+            const communityContainer = document.getElementById('community-container');
+            
+            // Limpiar contenedor
+            communityContainer.innerHTML = '';
+            
+            // Cargar publicaciones desde el array estático
+            communityPosts.forEach(post => {
+                const postCard = document.createElement('div');
+                postCard.className = 'post-card';
+                postCard.innerHTML = `
+                    <div class="post-header">
+                        <div class="post-avatar">${post.avatar}</div>
+                        <div class="post-author">${post.author}</div>
+                        <div class="post-date">${formatDate(post.date)}</div>
+                    </div>
+                    <div class="post-content">
+                        <span class="post-emoji">${post.emoji}</span>
+                        ${post.content}
+                    </div>
+                `;
+                
+                communityContainer.appendChild(postCard);
+            });
+        }
+
+        // ============================================
+        // FUNCIÓN PARA FORMATEAR FECHAS
+        // ============================================
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            };
+            return date.toLocaleDateString('es-ES', options);
+        }
+
+        // ============================================
+        // FUNCIÓN PARA ALTERNAR MODO CLARO/OSCURO
+        // ============================================
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            // Alternar clase
+            body.classList.toggle('light-mode');
+            
+            // Actualizar icono del botón
+            if (body.classList.contains('light-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // ============================================
+        // FUNCIÓN PARA CARGAR TEMA GUARDADO
+        // ============================================
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                if (themeToggle) themeToggle.textContent = '☀️';
+            } else {
+                document.body.classList.remove('light-mode');
+                if (themeToggle) themeToggle.textContent = '🌙';
+            }
+        }
+
+        // ============================================
+        // FUNCIONES PARA EL MENÚ HAMBURGUESA
+        // ============================================
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        // ============================================
+        // FUNCIÓN PARA ACTUALIZAR FECHA DE ÚLTIMA ACTUALIZACIÓN
+        // ============================================
+        function updateLastUpdateTime() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            };
+            const lastUpdateElement = document.getElementById('last-update');
+            if (lastUpdateElement) {
+                lastUpdateElement.textContent = now.toLocaleDateString('es-ES', options);
+            }
+        }
+
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar tema guardado
+            loadSavedTheme();
+            
+            // Cargar contenido destacado
+            loadFeaturedContent();
+            
+            // Cargar publicaciones de comunidad
+            loadCommunityPosts();
+            
+            // Cargar videos de YouTube inmediatamente
+            fetchYouTubeVideos();
+            
+            // Actualizar fecha de última actualización
+            updateLastUpdateTime();
+            
+            // Actualizar fecha cada 24 horas (86400000 ms)
+            setInterval(updateLastUpdateTime, 86400000);
+            
+            // Actualizar videos cada 5 minutos (300000 ms) para contenido más fresco
+            setInterval(fetchYouTubeVideos, 300000);
+            
+            // También actualizar cuando el usuario vuelve a la pestaña
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    console.log('Usuario regresó a la pestaña, actualizando videos...');
+                    fetchYouTubeVideos();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
